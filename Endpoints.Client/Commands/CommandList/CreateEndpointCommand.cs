@@ -14,7 +14,7 @@ namespace Endpoints.Commands.CommandList
 
         public override async Task ExecuteAsync()
         {
-            var stringTask = await Client.GetStringAsync("https://www.google.com");
+            var stringTask = await Client.GetStringAsync("https://localhost:7063/api/Endpoint/");
         }
     }
 }
