@@ -2,6 +2,7 @@ using Endpoints.Application.Endpoints.CreateEndpoint;
 using Endpoints.Application.Endpoints.DeleteEndpoint;
 using Endpoints.Application.Endpoints.EditEndpoint;
 using Endpoints.Application.Endpoints.FindEndpoint;
+using Endpoints.Application.Endpoints.ListEndpoint;
 using Endpoints.Application.Interfaces;
 using Endpoints.Persistence;
 using Endpoints.Persistence.Endpoints;
@@ -18,6 +19,7 @@ builder.Services.AddScoped<ICreateEndpoint, CreateEndpoint>();
 builder.Services.AddScoped<IEditEndpoint, EditEndpoint>();
 builder.Services.AddScoped<IDeleteEndpoint, DeleteEndpoint>();
 builder.Services.AddScoped<IFindEndpoint, FindEndpoint>();
+builder.Services.AddScoped<IListEndpoint, ListEndpoint>();
 
 
 builder.Services.AddControllers();

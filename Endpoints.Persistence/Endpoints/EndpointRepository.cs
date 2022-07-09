@@ -40,6 +40,12 @@ namespace Endpoints.Persistence.Endpoints
             return endpoint;
         }
 
+        public async Task<List<Endpoint>?> GetAllEndpoints()
+        {
+            var endpoints = await _context.Endpoints.ToListAsync();
+            return endpoints;
+        }
+
         public async Task SaveAsync()
         {
             await _context.SaveChangesAsync();

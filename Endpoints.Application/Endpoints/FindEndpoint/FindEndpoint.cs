@@ -1,4 +1,4 @@
-﻿using Endpoints.Application.Endpoints.FindEndpoint;
+﻿using Endpoints.Application.Endpoints.Common;
 using Endpoints.Application.Interfaces;
 using Endpoints.Domain.Endpoints;
 using System;
@@ -21,13 +21,13 @@ namespace Endpoints.Application.Endpoints.FindEndpoint
             _endpointRepository = endpointRepository;
         }
 
-        public async Task<FindEndpointDto> Execute(FindEndpointModel model)
+        public async Task<EndpointResultDto> Execute(FindEndpointModel model)
         {
             Endpoint? existingEndpoint = await _endpointRepository.GetEndpointBySerialNumberAsync(model.EndpointSerialNumber);
             if (existingEndpoint == null)
                 throw new ValidationException("No endpoint was found with the given serial number.");
 
-            return new FindEndpointDto
+            return new EndpointResultDto
             {
                 EndpointSerialNumber = existingEndpoint.EndpointSerialNumber,
                 MeterModelId = existingEndpoint.MeterModelId.ToString(),

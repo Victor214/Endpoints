@@ -13,6 +13,7 @@ namespace Endpoints.Application.Interfaces
         void Update(Endpoint endpoint);
         void Delete(Endpoint endpoint);
         Task<Endpoint?> GetEndpointBySerialNumberAsync(string? endpointSerialNumber);
+        Task<List<Endpoint>?> GetAllEndpoints();
         Task SaveAsync();
     }
 }

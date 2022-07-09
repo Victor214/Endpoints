@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Endpoints.Application.Endpoints.Common;
 
 namespace Endpoints.Application.Endpoints.FindEndpoint
 {
     public interface IFindEndpoint
     {
-        Task<FindEndpointDto> Execute(FindEndpointModel model);
+        Task<EndpointResultDto> Execute(FindEndpointModel model);
     }
 }

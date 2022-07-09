@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Endpoints.Application.Endpoints.FindEndpoint
+namespace Endpoints.Application.Endpoints.Common
 {
-    public class FindEndpointDto
+    public class EndpointResultDto
     {
         public string? EndpointSerialNumber { get; set; }
         public string? MeterModelId { get; set; }

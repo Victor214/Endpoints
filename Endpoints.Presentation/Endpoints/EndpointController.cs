@@ -2,6 +2,7 @@
 using Endpoints.Application.Endpoints.DeleteEndpoint;
 using Endpoints.Application.Endpoints.EditEndpoint;
 using Endpoints.Application.Endpoints.FindEndpoint;
+using Endpoints.Application.Endpoints.ListEndpoint;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
@@ -15,18 +16,21 @@ namespace Endpoints.Presentation.Controllers
         private readonly IEditEndpoint _editEndpoint;
         private readonly IDeleteEndpoint _deleteEndpoint;
         private readonly IFindEndpoint _findEndpoint;
+        private readonly IListEndpoint _listEndpoint;
 
         public EndpointController(
             ICreateEndpoint createEndpoint,
             IEditEndpoint editEndpoint,
             IDeleteEndpoint deleteEndpoint,
-            IFindEndpoint findEndpoint
+            IFindEndpoint findEndpoint,
+            IListEndpoint listEndpoint
         )
         {
             _createEndpoint = createEndpoint;
             _editEndpoint = editEndpoint;
             _deleteEndpoint = deleteEndpoint;
             _findEndpoint = findEndpoint;
+            _listEndpoint = listEndpoint;
         }
 
         [HttpPost]
@@ -99,6 +103,24 @@ namespace Endpoints.Presentation.Controllers
                 };
                 var findEndpointDto = await _findEndpoint.Execute(findEndpointModel);
                 return Ok(findEndpointDto);
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception)
+            {
+                return BadRequest("Unknown error.");
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ListEndpointAsync()
+        {
+            try
+            {
+                var endpointsDto = await _listEndpoint.Execute();
+                return Ok(endpointsDto);
             }
             catch (ValidationException ex)
             {
