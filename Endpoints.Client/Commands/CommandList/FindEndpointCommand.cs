@@ -41,14 +41,14 @@ namespace Endpoints.Commands.CommandList
         public override async Task ExecuteAsync()
         {
             var input = ReadInput();
-            var editEndpointResponse = await Client.GetAsync($"{ClientConfig.ApiPath}/api/Endpoint/{input.EndpointSerialNumber}");
-            if (!editEndpointResponse.IsSuccessStatusCode)
+            var findEndpointResponse = await Client.GetAsync($"{ClientConfig.ApiPath}/api/Endpoint/{input.EndpointSerialNumber}");
+            if (!findEndpointResponse.IsSuccessStatusCode)
             {
-                await DisplayError(editEndpointResponse);
+                await DisplayError(findEndpointResponse);
                 return;
             }
 
-            var findEndpointOutput = await DeserializeResponseAsync<FindEndpointOutput>(editEndpointResponse);
+            var findEndpointOutput = await DeserializeResponseAsync<FindEndpointOutput>(findEndpointResponse);
             DisplayResult(findEndpointOutput);
         }
     }

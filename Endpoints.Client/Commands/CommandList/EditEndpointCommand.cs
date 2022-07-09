@@ -13,11 +13,14 @@ namespace Endpoints.Commands.CommandList
     {
         public override string BaseText => "2) Edit an endpoint";
 
-        private EditEndpointInput ReadInput()
+        private string ReadSerialNumber()
         {
             Console.WriteLine("Enter the serial number of the endpoint you want to update (text):");
-            string endpointSerialNumber = ReadString();
+            return ReadString();
+        }
 
+        private EditEndpointInput ReadInput()
+        {
             Console.WriteLine("Enter a meter switch state to replace the old one (integer):");
             Console.WriteLine("  0) Disconnected");
             Console.WriteLine("  1) Connected");
@@ -26,7 +29,6 @@ namespace Endpoints.Commands.CommandList
 
             EditEndpointInput input = new EditEndpointInput
             {
-                EndpointSerialNumber = endpointSerialNumber,
                 SwitchState = switchState
             };
             return input;
@@ -34,7 +36,19 @@ namespace Endpoints.Commands.CommandList
 
         public override async Task ExecuteAsync()
         {
+            // Checks if given endpoint exists by attempting to hit the FIND endpoint.
+            var serialNumber = ReadSerialNumber();
+            var findEndpointResponse = await Client.GetAsync($"{ClientConfig.ApiPath}/api/Endpoint/{serialNumber}");
+            if (!findEndpointResponse.IsSuccessStatusCode)
+            {
+                await DisplayError(findEndpointResponse);
+                return;
+            }
+
+            // Finally executes the edit call
             var input = ReadInput();
+            input.EndpointSerialNumber = serialNumber;
+
             var editEndpointResponse = await Client.PutAsJsonAsync($"{ClientConfig.ApiPath}/api/Endpoint/{input.EndpointSerialNumber}", input);
             if (!editEndpointResponse.IsSuccessStatusCode)
             {
