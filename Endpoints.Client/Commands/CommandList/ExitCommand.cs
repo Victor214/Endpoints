@@ -10,9 +10,24 @@ namespace Endpoints.Commands.CommandList
     {
         public override string BaseText => "6) Exit the system";
 
+
+        private string ReadConfirmation()
+        {
+            Console.WriteLine("Are you sure you want to close the application? (y/n)");
+            return ReadString();
+        }
+
         public override async Task ExecuteAsync()
         {
-            throw new NotImplementedException();
+            // Confirmation
+            string confirmation = ReadConfirmation();
+            if (confirmation.ToLower() != "y")
+            {
+                return;
+            }
+
+            Console.Write("Exiting...");
+            Environment.Exit(0);
         }
     }
 }
