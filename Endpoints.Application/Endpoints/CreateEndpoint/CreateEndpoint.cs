@@ -30,7 +30,7 @@ namespace Endpoints.Application.Endpoints.CreateEndpoint
                 model.SwitchState
                 );
 
-            Endpoint? repeatedEndpoint = _endpointRepository.GetEndpointBySerialNumber(endpoint.EndpointSerialNumber);
+            Endpoint? repeatedEndpoint = await _endpointRepository.GetEndpointBySerialNumberAsync(endpoint.EndpointSerialNumber);
             if (repeatedEndpoint != null)
                 throw new ValidationException("An endpoint already exists with the given serial number.");
 
