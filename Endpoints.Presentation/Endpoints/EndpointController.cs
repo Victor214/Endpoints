@@ -1,6 +1,7 @@
 ﻿using Endpoints.Application.Endpoints.CreateEndpoint;
 using Endpoints.Presentation.Endpoints.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace Endpoints.Presentation.Controllers
 {
@@ -20,8 +21,19 @@ namespace Endpoints.Presentation.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateEndpointAsync(CreateEndpointModel createEndpointModel)
         {
-            await _createEndpoint.Execute(createEndpointModel);
-            return Ok();
+            try
+            {
+                await _createEndpoint.Execute(createEndpointModel);
+                return Ok();
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception)
+            {
+                return BadRequest("Unknown error.");
+            }
         }
     }
 }

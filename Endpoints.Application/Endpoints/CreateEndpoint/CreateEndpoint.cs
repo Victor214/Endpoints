@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Endpoints.Domain.Endpoints;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,13 @@ namespace Endpoints.Application.Endpoints.CreateEndpoint
     {
         public async Task Execute(CreateEndpointModel model)
         {
-            
+            Endpoint endpoint = new Endpoint(
+                model.EndpointSerialNumber,
+                model.MeterModelId,
+                model.MeterNumber,
+                model.MeterFirmwareVersion,
+                model.SwitchState
+                );
         }
     }
 }

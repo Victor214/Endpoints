@@ -7,7 +7,7 @@ while (true)
     var option = commandManager.ReadOption();
     if (option == null)
     {
-        Console.WriteLine("O comando ou entrada especificado não foi reconhecido.");
+        Console.WriteLine("The specified command or input was not recognized as a valid action.");
         return;
     }
     await commandManager.ExecuteOption(option.Value);

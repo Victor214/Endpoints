@@ -49,7 +49,12 @@ namespace Endpoints.Commands.CommandList
         public override async Task ExecuteAsync()
         {
             var input = ReadInput();
-            var stringTask = await Client.PostAsJsonAsync($"{ClientConfig.ApiPath}/api/Endpoint/", input);
+            var createEndpointResponse = await Client.PostAsJsonAsync($"{ClientConfig.ApiPath}/api/Endpoint/", input);
+            if (!createEndpointResponse.IsSuccessStatusCode)
+            {
+                await DisplayError(createEndpointResponse);
+                return;
+            }
         }
     }
 }
