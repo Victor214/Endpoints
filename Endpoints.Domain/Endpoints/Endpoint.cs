@@ -7,26 +7,31 @@ using System.Threading.Tasks;
 
 namespace Endpoints.Domain.Endpoints
 {
-    public class Endpoint
+    public class Endpoint : BaseEntity
     {
         [Required]
         [StringLength(maximumLength: 16, MinimumLength = 1)]
-        public string? EndpointSerialNumber { get; }
+        public string? EndpointSerialNumber { get; set; }
 
         [Required]
-        public EModelId MeterModelId { get; }
+        public EModelId MeterModelId { get; set; }
 
         [Required]
-        public int MeterNumber { get; }
+        public int MeterNumber { get; set; }
 
         [Required]
         [StringLength(maximumLength: 16, MinimumLength = 1)]
-        public string? MeterFirmwareVersion { get; }
+        public string? MeterFirmwareVersion { get; set; }
 
         [Required]
-        public ESwitchState SwitchState { get; }
+        public ESwitchState SwitchState { get; set; }
 
-        public Endpoint(string? endpointSerialNumber, string? meterModelId, int meterNumber, string meterFirmwareVersion, int switchState)
+        public Endpoint()
+        { 
+
+        }
+
+        public Endpoint(string? endpointSerialNumber, string? meterModelId, int meterNumber, string? meterFirmwareVersion, int switchState)
         {
             ValidateExistingMeterModelId(meterModelId);
             ValidateExistingSwitchState(switchState);

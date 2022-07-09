@@ -1,9 +1,18 @@
 using Endpoints.Application.Endpoints.CreateEndpoint;
+using Endpoints.Application.Interfaces;
+using Endpoints.Persistence;
+using Endpoints.Persistence.Endpoints;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add database configuration
+builder.Services.AddDbContext<EndpointsDbContext>(opt => opt.UseInMemoryDatabase("EndpointsDb"));
+builder.Services.AddScoped<IEndpointRepository, EndpointRepository>();
+
 // Add services to container
-builder.Services.AddSingleton<ICreateEndpoint, CreateEndpoint>();
+builder.Services.AddScoped<ICreateEndpoint, CreateEndpoint>();
+
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

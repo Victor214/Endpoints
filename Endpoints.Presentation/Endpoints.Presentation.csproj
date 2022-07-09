@@ -7,11 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.6" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Endpoints.Application\Endpoints.Application.csproj" />
+    <ProjectReference Include="..\Endpoints.Persistence\Endpoints.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
