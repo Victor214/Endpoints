@@ -11,6 +11,7 @@ namespace Endpoints.Application.Interfaces
     {
         void Create(Endpoint endpoint);
         void Update(Endpoint endpoint);
+        void Delete(Endpoint endpoint);
         Task<Endpoint?> GetEndpointBySerialNumberAsync(string? endpointSerialNumber);
         Task SaveAsync();
     }

@@ -1,4 +1,5 @@
 using Endpoints.Application.Endpoints.CreateEndpoint;
+using Endpoints.Application.Endpoints.DeleteEndpoint;
 using Endpoints.Application.Endpoints.EditEndpoint;
 using Endpoints.Application.Endpoints.FindEndpoint;
 using Endpoints.Application.Interfaces;
@@ -15,6 +16,7 @@ builder.Services.AddScoped<IEndpointRepository, EndpointRepository>();
 // Add services to container
 builder.Services.AddScoped<ICreateEndpoint, CreateEndpoint>();
 builder.Services.AddScoped<IEditEndpoint, EditEndpoint>();
+builder.Services.AddScoped<IDeleteEndpoint, DeleteEndpoint>();
 builder.Services.AddScoped<IFindEndpoint, FindEndpoint>();
 
 

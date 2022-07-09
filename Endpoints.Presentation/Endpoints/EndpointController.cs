@@ -1,4 +1,5 @@
 ﻿using Endpoints.Application.Endpoints.CreateEndpoint;
+using Endpoints.Application.Endpoints.DeleteEndpoint;
 using Endpoints.Application.Endpoints.EditEndpoint;
 using Endpoints.Application.Endpoints.FindEndpoint;
 using Microsoft.AspNetCore.Mvc;
@@ -12,16 +13,19 @@ namespace Endpoints.Presentation.Controllers
     {
         private readonly ICreateEndpoint _createEndpoint;
         private readonly IEditEndpoint _editEndpoint;
+        private readonly IDeleteEndpoint _deleteEndpoint;
         private readonly IFindEndpoint _findEndpoint;
 
         public EndpointController(
             ICreateEndpoint createEndpoint,
             IEditEndpoint editEndpoint,
+            IDeleteEndpoint deleteEndpoint,
             IFindEndpoint findEndpoint
         )
         {
             _createEndpoint = createEndpoint;
             _editEndpoint = editEndpoint;
+            _deleteEndpoint = deleteEndpoint;
             _findEndpoint = findEndpoint;
         }
 
@@ -50,6 +54,28 @@ namespace Endpoints.Presentation.Controllers
             {
                 editEndpointModel.EndpointSerialNumber = endpointSerialNumber;
                 await _editEndpoint.Execute(editEndpointModel);
+                return Ok();
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception)
+            {
+                return BadRequest("Unknown error.");
+            }
+        }
+
+        [HttpDelete("{endpointSerialNumber}")]
+        public async Task<IActionResult> DeleteEndpointAsync([FromRoute] string? endpointSerialNumber)
+        {
+            try
+            {
+                DeleteEndpointModel deleteEndpointModel = new DeleteEndpointModel()
+                {
+                    EndpointSerialNumber = endpointSerialNumber
+                };
+                await _deleteEndpoint.Execute(deleteEndpointModel);
                 return Ok();
             }
             catch (ValidationException ex)
