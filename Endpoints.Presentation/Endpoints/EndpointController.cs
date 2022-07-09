@@ -18,10 +18,9 @@ namespace Endpoints.Presentation.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateEndpoint(CreateEndpointViewModel createEndpointViewModel)
+        public async Task<IActionResult> CreateEndpointAsync(CreateEndpointModel createEndpointModel)
         {
-            var model = createEndpointViewModel.Endpoint;
-            _createEndpoint.Execute(model);
+            await _createEndpoint.Execute(createEndpointModel);
             return Ok();
         }
     }

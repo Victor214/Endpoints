@@ -1,5 +1,9 @@
+using Endpoints.Application.Endpoints.CreateEndpoint;
+
 var builder = WebApplication.CreateBuilder(args);
 
+// Add services to container
+builder.Services.AddSingleton<ICreateEndpoint, CreateEndpoint>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

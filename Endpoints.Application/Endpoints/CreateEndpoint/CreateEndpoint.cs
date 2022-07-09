@@ -8,8 +8,7 @@ namespace Endpoints.Application.Endpoints.CreateEndpoint
 {
     public class CreateEndpoint : ICreateEndpoint
     {
-
-        public void Execute(CreateEndpointModel model)
+        public async Task Execute(CreateEndpointModel model)
         {
             
         }

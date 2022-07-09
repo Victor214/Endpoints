@@ -14,6 +14,25 @@ namespace Endpoints.Commands.CommandList
         protected HttpClient Client { get; set; } = new HttpClient();
         public abstract Task ExecuteAsync();
 
+        protected string ReadString()
+        {
+            var input = Console.ReadLine() ?? "";
+            return input;
+        }
+
+        protected int ReadInt()
+        {
+            var input = Console.ReadLine() ?? "";
+            var hasParsed = int.TryParse(input, out var intInput);
+            if (!hasParsed)
+            {
+                Console.WriteLine("Please input a valid integer.");
+                return ReadInt();
+            }
+
+            return intInput;
+        }
+
         public BaseCommand()
         {
             Client.DefaultRequestHeaders.Accept.Clear();

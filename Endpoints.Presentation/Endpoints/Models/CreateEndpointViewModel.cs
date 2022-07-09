@@ -4,6 +4,6 @@ namespace Endpoints.Presentation.Endpoints.Models
 {
     public class CreateEndpointViewModel
     {
-        public CreateEndpointModel Endpoint { get; set; }
+        public CreateEndpointModel? Endpoint { get; set; }
     }
 }

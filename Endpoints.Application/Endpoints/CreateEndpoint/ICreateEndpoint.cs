@@ -8,6 +8,6 @@ namespace Endpoints.Application.Endpoints.CreateEndpoint
 {
     public interface ICreateEndpoint
     {
-        void Execute(CreateEndpointModel model);
+        Task Execute(CreateEndpointModel model);
     }
 }
