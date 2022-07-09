@@ -9,7 +9,8 @@ namespace Endpoints.Application.Interfaces
 {
     public interface IEndpointRepository
     {
-        Task CreateAsync(Endpoint endpoint);
+        void Create(Endpoint endpoint);
+        void Update(Endpoint endpoint);
         Task<Endpoint?> GetEndpointBySerialNumberAsync(string? endpointSerialNumber);
         Task SaveAsync();
     }

@@ -9,7 +9,6 @@ namespace Endpoints.Commands.CommandList
     public class ExitCommand : BaseCommand
     {
         public override string BaseText => "6) Exit the system";
-        protected override string Instructions => "New endpoint command instructions\nTest";
 
         public override async Task ExecuteAsync()
         {

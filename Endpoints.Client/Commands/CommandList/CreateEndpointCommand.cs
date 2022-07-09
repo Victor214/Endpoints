@@ -1,5 +1,5 @@
 ﻿using Endpoints.Client;
-using Endpoints.Client.Model;
+using Endpoints.Client.Commands.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +12,6 @@ namespace Endpoints.Commands.CommandList
     public class CreateEndpointCommand : BaseCommand
     {
         public override string BaseText => "1) Insert a new endpoint";
-
-        protected override string Instructions => "New endpoint command instructions\nTest";
 
         private CreateEndpointInput ReadInput()
         {
@@ -55,6 +53,7 @@ namespace Endpoints.Commands.CommandList
                 await DisplayError(createEndpointResponse);
                 return;
             }
+            Console.WriteLine("Endpoint created successfully.");
         }
     }
 }

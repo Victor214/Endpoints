@@ -18,10 +18,15 @@ namespace Endpoints.Persistence.Endpoints
             _context = context;
         }
 
-        public async Task CreateAsync(Endpoint endpoint)
+        public void Create(Endpoint endpoint)
         {
 
-            await _context.Endpoints.AddAsync(endpoint);
+            _context.Endpoints.Add(endpoint);
+        }
+
+        public void Update(Endpoint endpoint)
+        {
+            _context.Endpoints.Update(endpoint);
         }
 
         public async Task<Endpoint?> GetEndpointBySerialNumberAsync(string? endpointSerialNumber)

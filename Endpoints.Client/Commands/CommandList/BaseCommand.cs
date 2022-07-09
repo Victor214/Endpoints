@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Endpoints.Client.Commands.Output;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Endpoints.Commands.CommandList
@@ -11,12 +13,12 @@ namespace Endpoints.Commands.CommandList
     public abstract class BaseCommand
     {
         public abstract string BaseText { get; }
-        protected abstract string Instructions { get; }
         protected HttpClient Client { get; set; } = new HttpClient()
         {
             Timeout = TimeSpan.FromMinutes(10)
         };
         public abstract Task ExecuteAsync();
+
 
         protected string ReadString()
         {
@@ -48,6 +50,14 @@ namespace Endpoints.Commands.CommandList
             {
                 Console.WriteLine($"An error has occurred when communicating with the server. StatusCode: {endpointResponse.StatusCode}");
             }
+        }
+
+        protected static async Task<T?> DeserializeResponseAsync<T>(HttpResponseMessage? response)
+        {
+            var content = await response.Content.ReadAsStringAsync();
+            var output = JsonSerializer.Deserialize<T>(content,
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            return output;
         }
 
         public BaseCommand()

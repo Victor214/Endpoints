@@ -1,17 +1,19 @@
-﻿using System;
+﻿using Endpoints.Domain.Endpoints;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Endpoints.Client.Model
+namespace Endpoints.Application.Endpoints.FindEndpoint
 {
-    public class CreateEndpointInput
+    public class FindEndpointDto
     {
         public string? EndpointSerialNumber { get; set; }
         public string? MeterModelId { get; set; }
         public int MeterNumber { get; set; }
         public string? MeterFirmwareVersion { get; set; }
-        public int SwitchState { get; set; }
+        public ESwitchState SwitchState { get; set; }
     }
 }

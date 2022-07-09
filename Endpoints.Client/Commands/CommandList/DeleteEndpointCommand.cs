@@ -10,8 +10,6 @@ namespace Endpoints.Commands.CommandList
     {
         public override string BaseText => "3) Delete endpoint";
 
-        protected override string Instructions => "New endpoint command instructions\nTest";
-
         public override async Task ExecuteAsync()
         {
             throw new NotImplementedException();

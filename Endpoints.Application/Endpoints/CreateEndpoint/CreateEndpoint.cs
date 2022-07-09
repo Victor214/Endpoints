@@ -34,7 +34,7 @@ namespace Endpoints.Application.Endpoints.CreateEndpoint
             if (repeatedEndpoint != null)
                 throw new ValidationException("An endpoint already exists with the given serial number.");
 
-            await _endpointRepository.CreateAsync(endpoint);
+            _endpointRepository.Create(endpoint);
             await _endpointRepository.SaveAsync();
         }
     }
