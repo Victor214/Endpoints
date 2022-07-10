@@ -10,6 +10,5 @@ namespace Endpoints.Client.Commands.Attributes
     public class EndpointDisplayAttribute : Attribute
     {
         public string Name { get; set; }
-        public int TableMaxWidth { get; set; }
     }
 }

@@ -10,19 +10,19 @@ namespace Endpoints.Client.Commands.Output
 {
     public class EndpointOutput
     {
-        [EndpointDisplay(Name = "Serial Number", TableMaxWidth = 15)]
+        [EndpointDisplay(Name = "Serial Number")]
         public string? EndpointSerialNumber { get; set; }
 
-        [EndpointDisplay(Name = "Model Id", TableMaxWidth = 11)]
+        [EndpointDisplay(Name = "Model Id")]
         public string? MeterModelId { get; set; }
 
-        [EndpointDisplay(Name = "Meter Number", TableMaxWidth = 13)]
+        [EndpointDisplay(Name = "Meter Number")]
         public int MeterNumber { get; set; }
 
-        [EndpointDisplay(Name = "Firmware Version", TableMaxWidth = 16)]
+        [EndpointDisplay(Name = "Firmware Version")]
         public string? MeterFirmwareVersion { get; set; }
 
-        [EndpointDisplay(Name = "Switch State", TableMaxWidth = 13)]
+        [EndpointDisplay(Name = "Switch State")]
         public ESwitchState SwitchState { get; set; }
     }
 }

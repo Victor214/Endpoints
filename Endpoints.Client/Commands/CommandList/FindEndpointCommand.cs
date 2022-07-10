@@ -58,12 +58,12 @@ namespace Endpoints.Commands.CommandList
 
         private void DisplayResult(EndpointOutput? findEndpointOutput)
         {
-            AnsiConsole.MarkupLine("[#f28d8d]" + new string('-', 60) + "[/]");
+            AnsiConsole.MarkupLine("[#f28d8d]" + new string('-', 35) + "[/]");
             foreach (var propertyData in GetDisplayData(findEndpointOutput))
             {
                 AnsiConsole.MarkupLineInterpolated($"[#f28d8d]{propertyData.key}:[/] {propertyData.value}");
             }
-            AnsiConsole.MarkupLine("[#f28d8d]" + new string('-', 60) + "[/]");
+            AnsiConsole.MarkupLine("[#f28d8d]" + new string('-', 35) + "[/]");
         }
 
         public override async Task ExecuteAsync()
