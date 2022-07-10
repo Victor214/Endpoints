@@ -13,10 +13,8 @@ namespace Endpoints.Commands.CommandList
     public abstract class BaseCommand
     {
         public abstract string BaseText { get; }
-        protected HttpClient Client { get; set; } = new HttpClient()
-        {
-            Timeout = TimeSpan.FromMinutes(10)
-        };
+        protected HttpClient Client { get; set; } = new HttpClient();
+
         public abstract Task ExecuteAsync();
 
 
