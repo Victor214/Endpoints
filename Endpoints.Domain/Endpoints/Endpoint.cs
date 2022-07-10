@@ -45,7 +45,7 @@ namespace Endpoints.Domain.Endpoints
             Validate(); // Run last to make sure all properties are set beforehand.
         }
 
-        public void SetSwitchState(int switchState)
+        public virtual void SetSwitchState(int switchState)
         {
             ValidateExistingSwitchState(switchState);
             SwitchState = (ESwitchState)switchState;

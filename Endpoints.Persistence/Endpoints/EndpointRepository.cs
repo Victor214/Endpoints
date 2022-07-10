@@ -34,6 +34,11 @@ namespace Endpoints.Persistence.Endpoints
             _context.Endpoints.Remove(endpoint);
         }
 
+        public async Task<bool> SerialNumberExists(string? endpointSerialNumber)
+        {
+            return await _context.Endpoints.AnyAsync(x => x.EndpointSerialNumber == endpointSerialNumber);
+        }
+
         public async Task<Endpoint?> GetEndpointBySerialNumberAsync(string? endpointSerialNumber)
         {
             var endpoint = await _context.Endpoints.FirstOrDefaultAsync(x => x.EndpointSerialNumber == endpointSerialNumber);
