@@ -47,7 +47,7 @@ namespace Endpoints.Presentation.Controllers
             }
             catch (Exception)
             {
-                return BadRequest("Unknown error.");
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 
@@ -66,7 +66,7 @@ namespace Endpoints.Presentation.Controllers
             }
             catch (Exception)
             {
-                return BadRequest("Unknown error.");
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 
@@ -88,7 +88,7 @@ namespace Endpoints.Presentation.Controllers
             }
             catch (Exception)
             {
-                return BadRequest("Unknown error.");
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 
@@ -110,7 +110,7 @@ namespace Endpoints.Presentation.Controllers
             }
             catch (Exception)
             {
-                return BadRequest("Unknown error.");
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 
@@ -128,7 +128,7 @@ namespace Endpoints.Presentation.Controllers
             }
             catch (Exception)
             {
-                return BadRequest("Unknown error.");
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
     }
