@@ -1,5 +1,6 @@
 ﻿using Endpoints.Client;
 using Endpoints.Client.Commands.Input;
+using Spectre.Console;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,17 +12,17 @@ namespace Endpoints.Commands.CommandList
 {
     public class DeleteEndpointCommand : BaseCommand
     {
-        public override string BaseText => "3) Delete endpoint";
+        public override string BaseText => "Delete endpoint";
 
         private string ReadSerialNumber()
         {
-            Console.WriteLine("Enter the serial number of the endpoint you want to delete (text):");
+            AnsiConsole.MarkupLine("Enter the [underline #f7d53e]serial number[/] of the endpoint you want to delete ([#246ff0]text[/]):");
             return ReadString();
         }
 
         private string ReadConfirmation()
         {
-            Console.WriteLine("Are you sure you would like to delete this endpoint? (y/n)");
+            AnsiConsole.MarkupLine("Are you sure you would like to [#f02443]delete[/] this endpoint? [underline #f7d53e](y/n)[/]");
             return ReadString();
         }
 
@@ -51,7 +52,7 @@ namespace Endpoints.Commands.CommandList
                 await DisplayError(deleteEndpointResponse);
                 return;
             }
-            Console.WriteLine("Endpoint removed successfully.");
+            AnsiConsole.MarkupLine("[#3ce66c]Endpoint removed successfully.[/]");
         }
     }
 }

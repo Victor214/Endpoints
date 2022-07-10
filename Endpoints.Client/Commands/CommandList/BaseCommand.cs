@@ -1,4 +1,5 @@
 ﻿using Endpoints.Client.Commands.Output;
+using Spectre.Console;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,11 +43,11 @@ namespace Endpoints.Commands.CommandList
             if (endpointResponse.StatusCode == HttpStatusCode.BadRequest)
             {
                 var textContent = await endpointResponse.Content.ReadAsStringAsync();
-                Console.WriteLine(textContent);
+                AnsiConsole.MarkupLineInterpolated($"[#e63c3f]{textContent}[/]");
             }
             else
             {
-                Console.WriteLine($"An error has occurred when communicating with the server. StatusCode: {endpointResponse.StatusCode}");
+                AnsiConsole.MarkupLineInterpolated($"[#e63c3f]An error has occurred when communicating with the server. StatusCode: {endpointResponse.StatusCode}[/]");
             }
         }
 

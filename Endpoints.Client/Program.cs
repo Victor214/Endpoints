@@ -1,4 +1,5 @@
 ﻿using Endpoints;
+using Spectre.Console;
 
 while (true)
 {
@@ -7,7 +8,7 @@ while (true)
     var option = commandManager.ReadOption();
     if (option == null)
     {
-        Console.WriteLine("The specified command or input was not recognized as a valid action.");
+        AnsiConsole.MarkupLine("[#f5e9ec]The specified command or input was not recognized as a valid action.[/]");
         CommandManager.ClearConsole();
         continue;
     }

@@ -1,5 +1,6 @@
 ﻿using Endpoints.Client;
 using Endpoints.Client.Commands.Input;
+using Spectre.Console;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,20 +12,20 @@ namespace Endpoints.Commands.CommandList
 {
     public class EditEndpointCommand : BaseCommand
     {
-        public override string BaseText => "2) Edit an endpoint";
+        public override string BaseText => "Edit an endpoint";
 
         private string ReadSerialNumber()
         {
-            Console.WriteLine("Enter the serial number of the endpoint you want to update (text):");
+            AnsiConsole.MarkupLine("Enter the [underline #f7d53e]serial number[/] of the endpoint you want to update ([#246ff0]text[/]):");
             return ReadString();
         }
 
         private EditEndpointInput ReadInput()
         {
-            Console.WriteLine("Enter a meter switch state to replace the old one (integer):");
-            Console.WriteLine("  0) Disconnected");
-            Console.WriteLine("  1) Connected");
-            Console.WriteLine("  2) Armed");
+            AnsiConsole.MarkupLine("Enter a [underline #f7d53e]meter switch state[/] to replace the old one ([#f02443]integer[/]):");
+            AnsiConsole.MarkupLine("  [#f02443]0)[/] Disconnected");
+            AnsiConsole.MarkupLine("  [#f02443]1)[/] Connected");
+            AnsiConsole.MarkupLine("  [#f02443]2)[/] Armed");
             int switchState = ReadInt();
 
             EditEndpointInput input = new EditEndpointInput
@@ -55,7 +56,7 @@ namespace Endpoints.Commands.CommandList
                 await DisplayError(editEndpointResponse);
                 return;
             }
-            Console.WriteLine("Endpoint edited successfully.");
+            AnsiConsole.MarkupLine("[#3ce66c]Endpoint edited successfully.[/]");
         }
     }
 }

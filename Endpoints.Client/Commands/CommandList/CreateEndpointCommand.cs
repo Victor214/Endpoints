@@ -1,5 +1,6 @@
 ﻿using Endpoints.Client;
 using Endpoints.Client.Commands.Input;
+using Spectre.Console;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,26 +12,26 @@ namespace Endpoints.Commands.CommandList
 {
     public class CreateEndpointCommand : BaseCommand
     {
-        public override string BaseText => "1) Insert a new endpoint";
+        public override string BaseText => "Insert a new endpoint";
 
         private CreateEndpointInput ReadInput()
         {
-            Console.WriteLine("Enter a serial number (text):");
+            AnsiConsole.MarkupLine("Enter a [underline #f7d53e]serial number[/] ([#246ff0]text[/]):");
             string endpointSerialNumber = ReadString();
 
-            Console.WriteLine("Enter a meter model id (text):");
+            AnsiConsole.MarkupLine("Enter a [underline #f7d53e]meter model id[/] ([#246ff0]text[/]):");
             string meterModelId = ReadString();
 
-            Console.WriteLine("Enter a meter number (integer):");
+            AnsiConsole.MarkupLine("Enter a [underline #f7d53e]meter number[/] ([#f02443]integer[/]):");
             int meterNumber = ReadInt();
 
-            Console.WriteLine("Enter a meter firmware version (text):");
+            AnsiConsole.MarkupLine("Enter a [underline #f7d53e]meter firmware version[/] ([#246ff0]text[/]):");
             string meterFirmwareVersion = ReadString();
 
-            Console.WriteLine("Enter a meter switch state (integer):");
-            Console.WriteLine("  0) Disconnected");
-            Console.WriteLine("  1) Connected");
-            Console.WriteLine("  2) Armed");
+            AnsiConsole.MarkupLine("Enter a [underline #f7d53e]meter switch state[/] ([#f02443]integer[/]):");
+            AnsiConsole.MarkupLine("  [#f02443]0)[/] Disconnected");
+            AnsiConsole.MarkupLine("  [#f02443]1)[/] Connected");
+            AnsiConsole.MarkupLine("  [#f02443]2)[/] Armed");
             int switchState = ReadInt();
 
             CreateEndpointInput input = new CreateEndpointInput
@@ -53,7 +54,7 @@ namespace Endpoints.Commands.CommandList
                 await DisplayError(createEndpointResponse);
                 return;
             }
-            Console.WriteLine("Endpoint created successfully.");
+            AnsiConsole.MarkupLine("[#3ce66c]Endpoint created successfully.[/]");
         }
     }
 }

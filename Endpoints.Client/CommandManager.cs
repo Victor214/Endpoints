@@ -1,5 +1,7 @@
 ﻿using Endpoints.Commands.CommandList;
 using Endpoints.Commands.Enums;
+using Spectre.Console;
+using Spectre.Console.Cli;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
@@ -26,7 +28,7 @@ namespace Endpoints
             foreach (var command in Commands)
             {
                 var commandClass = command.Value;
-                Console.WriteLine(commandClass.BaseText);
+                AnsiConsole.MarkupLineInterpolated($"[#f02443]{(int)command.Key})[/] {commandClass.BaseText}");
             }
         }
 
@@ -55,7 +57,7 @@ namespace Endpoints
 
         public static void ClearConsole()
         {
-            Console.WriteLine("Press any key to continue");
+            AnsiConsole.MarkupLine("[#cdd9f7]Press any key to continue[/]");
             Console.ReadKey();
             Console.Clear();
         }

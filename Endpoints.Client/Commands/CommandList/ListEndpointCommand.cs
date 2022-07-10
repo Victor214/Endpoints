@@ -8,7 +8,7 @@ namespace Endpoints.Commands.CommandList
 {
     public class ListEndpointCommand : BaseCommand
     {
-        public override string BaseText => "4) List all endpoints";
+        public override string BaseText => "List all endpoints";
         private static readonly string tableSeparator = " | ";
 
         private List<string> GetFormattedEndpointColumns()

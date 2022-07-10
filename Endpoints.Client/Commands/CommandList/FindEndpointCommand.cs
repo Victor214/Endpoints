@@ -3,6 +3,7 @@ using Endpoints.Client.Commands.Attributes;
 using Endpoints.Client.Commands.Input;
 using Endpoints.Client.Commands.Output;
 using Endpoints.Client.Common.Extensions;
+using Spectre.Console;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,12 +17,12 @@ namespace Endpoints.Commands.CommandList
 {
     public class FindEndpointCommand : BaseCommand
     {
-        public override string BaseText => "5) Find an endpoint by serial number";
+        public override string BaseText => "Find an endpoint by serial number";
         private static readonly int EndpointDisplayTextMaxLength = 18;
 
         private FindEndpointInput ReadInput()
         {
-            Console.WriteLine("Enter the serial number of the endpoint you want to find (text):");
+            AnsiConsole.MarkupLine("Enter the [underline #f7d53e]serial number[/] of the endpoint you want to find ([#246ff0]text[/]):");
             string endpointSerialNumber = ReadString();
 
             FindEndpointInput input = new FindEndpointInput
@@ -57,12 +58,12 @@ namespace Endpoints.Commands.CommandList
 
         private void DisplayResult(EndpointOutput? findEndpointOutput)
         {
-            Console.WriteLine(new string('-', 60));
+            AnsiConsole.MarkupLine("[#f28d8d]" + new string('-', 60) + "[/]");
             foreach (var propertyData in GetDisplayData(findEndpointOutput))
             {
-                Console.WriteLine($"{propertyData.key}: {propertyData.value}");
+                AnsiConsole.MarkupLineInterpolated($"[#f28d8d]{propertyData.key}:[/] {propertyData.value}");
             }
-            Console.WriteLine(new string('-', 60));
+            AnsiConsole.MarkupLine("[#f28d8d]" + new string('-', 60) + "[/]");
         }
 
         public override async Task ExecuteAsync()
