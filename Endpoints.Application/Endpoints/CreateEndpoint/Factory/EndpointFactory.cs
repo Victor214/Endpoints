@@ -11,7 +11,14 @@ namespace Endpoints.Application.Endpoints.CreateEndpoint.Factory
     {
         public Endpoint Create(string? endpointSerialNumber, string? meterModelId, int meterNumber, string? meterFirmwareVersion, int switchState)
         {
-            var endpoint = new Endpoint(endpointSerialNumber, meterModelId, meterNumber, meterFirmwareVersion, switchState);
+            var endpoint = new Endpoint
+            {
+                EndpointSerialNumber = endpointSerialNumber,
+                MeterNumber = meterNumber,
+                MeterFirmwareVersion = meterFirmwareVersion,
+                SwitchState = (ESwitchState) switchState,
+            };
+            endpoint.SetMeterModelId(meterModelId);
             return endpoint;
         }
     }
