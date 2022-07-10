@@ -8,7 +8,8 @@ while (true)
     if (option == null)
     {
         Console.WriteLine("The specified command or input was not recognized as a valid action.");
-        return;
+        CommandManager.ClearConsole();
+        continue;
     }
     await commandManager.ExecuteOption(option.Value);
 }

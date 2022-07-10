@@ -50,6 +50,14 @@ namespace Endpoints
         {
             var commandClass = Commands[commandId];
             await commandClass.ExecuteAsync();
+            ClearConsole();
+        }
+
+        public static void ClearConsole()
+        {
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
+            Console.Clear();
         }
 
         private bool IsValidCommandInput(string? input)

@@ -1,4 +1,5 @@
 using Endpoints.Application.Endpoints.CreateEndpoint;
+using Endpoints.Application.Endpoints.CreateEndpoint.Factory;
 using Endpoints.Application.Endpoints.DeleteEndpoint;
 using Endpoints.Application.Endpoints.EditEndpoint;
 using Endpoints.Application.Endpoints.FindEndpoint;
@@ -10,11 +11,12 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add database configuration
+// Core configuration
 builder.Services.AddDbContext<EndpointsDbContext>(opt => opt.UseInMemoryDatabase("EndpointsDb"));
 builder.Services.AddScoped<IEndpointRepository, EndpointRepository>();
+builder.Services.AddScoped<IEndpointFactory, EndpointFactory>();
 
-// Add services to container
+// Add operation services to container
 builder.Services.AddScoped<ICreateEndpoint, CreateEndpoint>();
 builder.Services.AddScoped<IEditEndpoint, EditEndpoint>();
 builder.Services.AddScoped<IDeleteEndpoint, DeleteEndpoint>();
