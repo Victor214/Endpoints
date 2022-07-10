@@ -24,6 +24,7 @@ namespace Endpoints.Domain.Endpoints
         private string? _endpointSerialNumber;
 
         [Required]
+        [ExistsInEnum(Type = typeof(EModelId), Message = "The informed Meter Model Id does not exist.")]
         public EModelId MeterModelId
         { 
             get { return _meterModelId; }
@@ -31,7 +32,6 @@ namespace Endpoints.Domain.Endpoints
             { 
                 _meterModelId = value;
                 DomainValidation.ValidateProperty(this, nameof(MeterModelId));
-                DomainValidation.ValidateEnumExists<EModelId>(MeterModelId, "The informed Meter Model Id does not exist.");
             }
         }
         private EModelId _meterModelId;
@@ -65,6 +65,7 @@ namespace Endpoints.Domain.Endpoints
 
 
         [Required]
+        [ExistsInEnum(Type = typeof(ESwitchState), Message = "The informed Switch State is not valid.")]
         public ESwitchState SwitchState
         {
             get { return _switchState; }
@@ -72,7 +73,6 @@ namespace Endpoints.Domain.Endpoints
             {
                 _switchState = value;
                 DomainValidation.ValidateProperty(this, nameof(SwitchState));
-                DomainValidation.ValidateEnumExists<ESwitchState>(SwitchState, "The informed Switch State is not valid.");
             }
         }
         private ESwitchState _switchState;

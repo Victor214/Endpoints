@@ -11,24 +11,6 @@ namespace Endpoints.Domain.Common
 {
     public static class DomainValidation
     {
-        public static void Validate(object instance)
-        {
-            var context = new ValidationContext(instance, serviceProvider: null, items: null);
-            var results = new List<ValidationResult>();
-            var isValid = Validator.TryValidateObject(instance, context, results, true);
-            if (!isValid)
-            {
-                var invalidMember = results
-                    .FirstOrDefault()?
-                    .MemberNames
-                    .FirstOrDefault();
-
-                if (invalidMember != null)
-                    throw new ValidationException($"The informed {invalidMember} is not valid.");
-                throw new Exception();
-            }
-        }
-
         public static void ValidateProperty(object instance, string propertyName)
         {
             PropertyInfo prop = instance.GetType().GetProperty(propertyName);
