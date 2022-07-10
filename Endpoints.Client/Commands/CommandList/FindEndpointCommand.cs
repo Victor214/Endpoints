@@ -2,7 +2,6 @@
 using Endpoints.Client.Commands.Attributes;
 using Endpoints.Client.Commands.Input;
 using Endpoints.Client.Commands.Output;
-using Endpoints.Client.Common.Extensions;
 using Spectre.Console;
 using System;
 using System.Collections.Generic;

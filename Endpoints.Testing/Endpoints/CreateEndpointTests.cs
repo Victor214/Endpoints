@@ -11,7 +11,7 @@ using Endpoints.Application.Endpoints.CreateEndpoint.Factory;
 using Endpoints.Domain.Endpoints;
 using System.ComponentModel.DataAnnotations;
 
-namespace Endpoints.Testing.Endpoints.CreateEndpointTests
+namespace Endpoints.Testing.Endpoints
 {
     public class CreateEndpointTests
     {

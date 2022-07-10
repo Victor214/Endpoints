@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Endpoints.Testing.Endpoints.FindEndpointTests
+namespace Endpoints.Testing.Endpoints
 {
     public class FindEndpointTests
     {

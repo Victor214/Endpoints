@@ -1,6 +1,5 @@
 ﻿using Endpoints.Client.Commands.Output;
 using Endpoints.Client;
-using Endpoints.Client.Common.Extensions;
 using System.Reflection;
 using Endpoints.Client.Commands.Attributes;
 using Spectre.Console;
