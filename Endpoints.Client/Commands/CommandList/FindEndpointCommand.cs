@@ -67,8 +67,8 @@ namespace Endpoints.Commands.CommandList
 
         public override async Task ExecuteAsync()
         {
-            var input = ReadInput();
-            var findEndpointResponse = await Client.GetAsync($"{ClientConfig.ApiPath}/api/Endpoint/{input.EndpointSerialNumber}");
+            var findEndpointInput = ReadInput();
+            var findEndpointResponse = await Client.GetAsync($"{ClientConfig.ApiPath}/api/Endpoint/{findEndpointInput.EndpointSerialNumber}");
             if (!findEndpointResponse.IsSuccessStatusCode)
             {
                 await DisplayError(findEndpointResponse);

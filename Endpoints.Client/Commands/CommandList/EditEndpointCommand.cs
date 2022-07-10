@@ -46,10 +46,10 @@ namespace Endpoints.Commands.CommandList
             }
 
             // Finally executes the edit call
-            var input = ReadInput();
-            input.EndpointSerialNumber = serialNumber;
+            var editEndpointInput = ReadInput();
+            editEndpointInput.EndpointSerialNumber = serialNumber;
 
-            var editEndpointResponse = await Client.PutAsJsonAsync($"{ClientConfig.ApiPath}/api/Endpoint/{input.EndpointSerialNumber}", input);
+            var editEndpointResponse = await Client.PutAsJsonAsync($"{ClientConfig.ApiPath}/api/Endpoint/{editEndpointInput.EndpointSerialNumber}", editEndpointInput);
             if (!editEndpointResponse.IsSuccessStatusCode)
             {
                 await DisplayError(editEndpointResponse);
